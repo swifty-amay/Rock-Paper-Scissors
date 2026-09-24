@@ -24,6 +24,8 @@ struct ContentView: View {
     @State private var appsMove = 0
     @State private var playerChoice = false
     @State private var score = 0
+    @State private var answerIsCorrect = false
+    @State private var showTitle = ""
     
     var body: some View {
         
@@ -72,6 +74,11 @@ struct ContentView: View {
             .clipShape(.rect(cornerRadius: 20))
             .padding()
         }
+        .alert(showTitle, isPresented: $answerIsCorrect){
+            Button("Continue", action: askAgain)
+        } message: {
+            Text("Your score is: \(score)")
+        }
     
     }
     
@@ -85,31 +92,40 @@ struct ContentView: View {
         case "🪨":
             if(playerChoice && playerMove == "paper"){
                 score += 1
+                showTitle = "Correct ✅"
             } else if(!playerChoice && playerMove == "scissor"){
                 score += 1
+                showTitle = "Correct ✅"
             } else{
                 score -= 1
+                showTitle = "Wrong ❌"
             }
         case "✂️":
             if(playerChoice && playerMove == "rock"){
                 score += 1
+                showTitle = "Correct ✅"
             } else if(!playerChoice && playerMove == "paper"){
                 score += 1
+                showTitle = "Correct ✅"
             } else{
                 score -= 1
+                showTitle = "Wrong ❌"
             }
         case "📰":
             if(playerChoice && playerMove == "scissor"){
                 score += 1
+                showTitle = "Correct ✅"
             } else if(!playerChoice && playerMove == "rock"){
                 score += 1
+                showTitle = "Correct ✅"
             } else{
                 score -= 1
+                showTitle = "Wrong ❌"
             }
         default:
             score = 0
         }
-        askAgain()
+        answerIsCorrect = true
     }
 }
 
