@@ -26,13 +26,15 @@ struct ContentView: View {
     @State private var score = 0
     @State private var answerIsCorrect = false
     @State private var showTitle = ""
+    @State private var numberOfQuestions = 0
+    @State private var showFinalAlert = false
     
     var body: some View {
         
         ZStack{
             RadialGradient(stops: [
-                .init(color: Color(red: 1, green: 0.8, blue: 0.1), location: 0.3),
-                .init(color: Color(red: 0, green: 0.8, blue: 0.2), location: 0.3),
+                .init(color: Color(red: 1, green: 0.7, blue: 0.1), location: 0.3),
+                .init(color: Color(red: 0, green: 0, blue: 0.4), location: 0.3),
             ], center: .top, startRadius: 200, endRadius: 400)
             .ignoresSafeArea()
             
@@ -79,6 +81,12 @@ struct ContentView: View {
         } message: {
             Text("Your score is: \(score)")
         }
+        .alert("Wow! You made it...", isPresented: $showFinalAlert){
+            Button("Ok"){ }
+            Button("Restart", action: restart)
+        } message: {
+            Text("Congratulations! You have successfully completed the game. Your final score is \(score)")
+        }
     
     }
     
@@ -86,8 +94,17 @@ struct ContentView: View {
         appsMove = Int.random(in: 0..<3)
         playerChoice = Bool.random()
     }
+    func restart(){
+        appsMove = Int.random(in: 0..<3)
+        playerChoice = Bool.random()
+        score = 0
+        numberOfQuestions = 0
+    }
     
     func checkAnswer(for appMove: String, value playerChoice: Bool, with playerMove: String){
+        if(numberOfQuestions == 9){
+            showFinalAlert = true
+        }
         switch appMove{
         case "🪨":
             if(playerChoice && playerMove == "paper"){
@@ -126,6 +143,7 @@ struct ContentView: View {
             score = 0
         }
         answerIsCorrect = true
+        numberOfQuestions += 1
     }
 }
 
