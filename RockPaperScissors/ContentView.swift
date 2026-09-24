@@ -7,15 +7,35 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ButtonView: View {
+    let name: String
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Text(name)
+    }
+}
+
+
+
+struct ContentView: View {
+    
+    let items = ["🪨", "📰", "✂️"]
+    @State private var appsMove = 0
+    @State private var playerChoice = false
+    
+    var body: some View {
+        VStack{
+            Text("Score: ???")
+                .font(.largeTitle.bold())
+            Text("It's a: \(playerChoice ? "Win" : "Lose")")
+                .font(.title)
+            Text(items[appsMove])
+                .font(.system(size: 200))
+            HStack(spacing: 48){
+                ButtonView(name: "Rock")
+                ButtonView(name: "Paper")
+                ButtonView(name: "Scissor")
+            }
         }
-        .padding()
     }
 }
 
