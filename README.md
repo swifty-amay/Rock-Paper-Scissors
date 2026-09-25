@@ -21,5 +21,14 @@ and many more.
 
 Building this project was a lot of phone. Hope that you'll enjoy playing it. Have fun...
 
+### Game Screenshots
+
+<p>
+  <img src="Screenshots/Screenshot 2026-09-25 at 10.40.33 PM.png" width="250">
+  <img src="Screenshots/Screenshot 2026-09-25 at 10.40.57 PM.png" width="250">
+  <img src="Screenshots/Screenshot 2026-09-25 at 10.41.08 PM.png" width="250">
+  <img src="Screenshots/Screenshot 2026-09-25 at 10.41.32 PM.png" width="250">
+</p>
+
 ## Author
-Amay Raj Srivastav [swifty-amay](https://github.com/swifty-amay)
+**Amay Raj Srivastav** - <u>[swifty-amay](https://github.com/swifty-amay)</u>
