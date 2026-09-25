@@ -99,6 +99,7 @@ struct ContentView: View {
         playerChoice = Bool.random()
         score = 0
         numberOfQuestions = 0
+        answerIsCorrect = false
     }
     
     func checkAnswer(for appMove: String, value playerChoice: Bool, with playerMove: String){
